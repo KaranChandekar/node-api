@@ -29,6 +29,10 @@ app.get("/", (req, res) => {
 
 app.get("/users/all", async (req, res) => {
   const users = await User.find({});
+  
+  const query = req.query;
+  console.log(query);
+
   res.json({
     success: true,
     users,
