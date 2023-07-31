@@ -29,13 +29,30 @@ app.get("/", (req, res) => {
 
 app.get("/users/all", async (req, res) => {
   const users = await User.find({});
-  
+
   const query = req.query;
   console.log(query);
 
   res.json({
     success: true,
     users,
+  });
+});
+
+app.get("/userid/special", (req, res) => {
+  res.json({
+    success: true,
+    message: "just joking!",
+  });
+});
+
+app.get("/userid/:id", async (req, res) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+
+  res.json({
+    success: true,
+    user,
   });
 });
 
